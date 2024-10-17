@@ -42,10 +42,6 @@ const dispatchChart = () => {
     xData.push(moment(item.timestamp * 1000).format('MM/DD HH:mm'));
     yData.push({value: item.duration, itemStyle: {color: item.status === OnlineStatus.online ? '#9fe46f' : '#d64343'}});
   });
-  if (xData.length === 0) {
-    xData.push(moment().unix());
-    yData.push(null);
-  }
   // chart
   const component = document.getElementById('service-line');
   try {

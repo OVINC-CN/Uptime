@@ -18,7 +18,7 @@
                 id="app-menu-logo"
               >
                 <div>
-                  OVINC
+                  Uptime
                 </div>
               </a-menu-item>
               <template
