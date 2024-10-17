@@ -14,6 +14,10 @@ const props = defineProps({
       }
     ),
   },
+  highLight: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 // status
@@ -34,7 +38,13 @@ const statusColor = computed(() => {
     class="service-card"
     :style="{backgroundColor: statusColor}"
   >
-    {{ service.name }}
+    <div>
+      {{ service.name }}
+      <icon-eye
+        v-if="highLight"
+        style="margin-right: 10px;"
+      />
+    </div>
   </a-card>
 </template>
 
@@ -51,6 +61,12 @@ const statusColor = computed(() => {
 }
 
 .service-card:hover {
-  box-shadow: var(--shadow2-center);
+  box-shadow: var(--shadow3-center);
+}
+
+.service-card > :deep(.arco-card-body) > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 </style>

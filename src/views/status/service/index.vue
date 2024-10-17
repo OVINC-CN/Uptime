@@ -7,6 +7,10 @@ defineProps({
     type: Array,
     default: () => ([]),
   },
+  currentService: {
+    type: String,
+    default: '',
+  },
 });
 
 // emits
@@ -25,6 +29,7 @@ const emits = defineEmits(['clickService']);
     >
       <service-card
         :service="item"
+        :high-light="currentService === item.id"
         @click="emits('clickService', item.id)"
       />
     </template>

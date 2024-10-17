@@ -31,6 +31,10 @@ const loadServices = () => {
   );
 };
 const clickService = (id) => {
+  if (currentService.value === id) {
+    currentService.value = '';
+    return;
+  }
   currentService.value = id;
 };
 onMounted(() => loadServices());
@@ -65,6 +69,7 @@ const allServiceOk = computed(() => {
         </div>
         <service
           :services="services"
+          :current-service="currentService"
           @click-service="clickService"
         />
       </a-layout-sider>

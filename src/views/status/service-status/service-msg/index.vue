@@ -39,6 +39,7 @@ watch(() => props.dots, () => {
           />
         </a-list-item>
       </template>
+      <template #empty />
     </a-list>
   </div>
 </template>
