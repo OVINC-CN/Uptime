@@ -1,5 +1,5 @@
 <script setup>
-import ServiceCard from '@/views/config/service/service-card/index.vue';
+import ServiceCard from '@/views/status/service/service-card/index.vue';
 
 // props
 defineProps({

@@ -18,6 +18,8 @@ const mEnUS = {
   Recent1Day: 'Last 1 Day',
   Recent3Day: 'Last 3 Days',
   Recent7Days: 'Last 7 Days',
+  AllServiceOK: 'All services is running peacefully',
+  SomeServiceWentWrong: 'Some services are experiencing irregular status.',
 };
 
 export default mEnUS;

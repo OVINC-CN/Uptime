@@ -1,10 +1,11 @@
 <script setup>
-import Service from '@/views/config/service/index.vue';
-import ServiceStatus from '@/views/config/service-status/index.vue';
+import Service from '@/views/status/service/index.vue';
+import ServiceStatus from '@/views/status/service-status/index.vue';
 import {computed, onMounted, ref} from 'vue';
 import {listServicesAPI} from '@/api/service';
 import {Message} from '@arco-design/web-vue';
 import {useI18n} from 'vue-i18n';
+import {OnlineStatus} from '@/constants/monitor';
 
 // i18n
 const i18n = useI18n();
@@ -33,6 +34,14 @@ const clickService = (id) => {
   currentService.value = id;
 };
 onMounted(() => loadServices());
+const allServiceOk = computed(() => {
+  for (const index in services.value) {
+    if (services.value[index].status !== OnlineStatus.online) {
+      return false;
+    }
+  }
+  return true;
+});
 </script>
 
 <template>
@@ -61,6 +70,7 @@ onMounted(() => loadServices());
       </a-layout-sider>
       <a-layout-content id="config-content">
         <service-status
+          :all-service-ok="allServiceOk"
           :service-id="currentService"
           :service-name="currentServiceName"
         />

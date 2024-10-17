@@ -111,27 +111,12 @@ document.title = title.value;
 // store
 const store = useStore();
 const mainLoading = computed(() => store.state.mainLoading);
-const userPermissions = computed(() => store.state.userPermissions);
 store.dispatch('getUserInfo');
-store.dispatch('loadUserPermissions');
 
 // menu
-const menu = ref([
-  {
-    key: 'Home',
-    name: i18n.t('Home'),
-    path_match: '/',
-    hide: false,
-  },
-  {
-    key: 'Config',
-    name: i18n.t('Config'),
-    path_match: '/config',
-    hide: computed(() => !userPermissions.value.is_superuser),
-  },
-]);
+const menu = ref([]);
 const router = useRouter();
-const currentMenuItem = ref(menu.value[0].key);
+const currentMenuItem = ref(menu.value[0]?.key);
 const goTo = (key) => {
   router.push({name: key});
 };

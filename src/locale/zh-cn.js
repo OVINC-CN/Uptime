@@ -18,6 +18,8 @@ const mZhCN = {
   Recent1Day: '最近1天',
   Recent3Day: '最近3天',
   Recent7Days: '最近7天',
+  AllServiceOK: 'All services are operating smoothly',
+  SomeServiceWentWrong: 'Some services are experiencing irregular status',
 };
 
 export default mZhCN;

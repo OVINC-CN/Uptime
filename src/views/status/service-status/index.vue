@@ -5,8 +5,8 @@ import {useI18n} from 'vue-i18n';
 import moment from 'moment';
 import {Message} from '@arco-design/web-vue';
 import {handleLoading} from '@/utils/loading';
-import ServiceLine from '@/views/config/service-status/service-line/index.vue';
-import ServiceMsg from '@/views/config/service-status/service-msg/index.vue';
+import ServiceLine from '@/views/status/service-status/service-line/index.vue';
+import ServiceMsg from '@/views/status/service-status/service-msg/index.vue';
 
 // i18n
 const i18n = useI18n();
@@ -23,6 +23,10 @@ const props = defineProps({
   serviceName: {
     type: String,
     default: '',
+  },
+  allServiceOk: {
+    type: Boolean,
+    default: true,
   },
 });
 
@@ -125,11 +129,6 @@ watch(() => props.serviceId, () => {
     loadStatusPoints();
   }
 });
-
-// settings
-const showSettings = () => {
-
-};
 </script>
 
 <template>
@@ -138,6 +137,15 @@ const showSettings = () => {
       :loading="pointsLoading"
       :tip="i18n.t('dataLoading')"
     >
+      <a-space
+        id="service-status-empty"
+        direction="vertical"
+        v-if="!serviceId"
+      >
+        <div :style="{color: allServiceOk ? 'rgb(var(--green-4))' : 'rgb(var(--orange-4))'}">
+          {{ allServiceOk ? i18n.t('AllServiceOK') : i18n.t('SomeServiceWentWrong') }}
+        </div>
+      </a-space>
       <a-space
         id="service-status-control"
         v-if="serviceId"
@@ -155,11 +163,6 @@ const showSettings = () => {
             {{ item.name }}
           </a-option>
         </a-select>
-        <a-button
-          @click="showSettings"
-        >
-          <icon-settings />
-        </a-button>
         <a-button
           @click="loadStatusPoints"
         >
@@ -192,5 +195,14 @@ const showSettings = () => {
 
 #service-status-control {
   width: 100%;
+}
+
+#service-status-empty {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px
 }
 </style>

@@ -3,13 +3,8 @@ import * as vueRouter from 'vue-router';
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: () => import('../views/home/index.vue'),
-  },
-  {
-    path: '/config/',
-    name: 'Config',
-    component: () => import('../views/config/index.vue'),
+    name: 'Status',
+    component: () => import('../views/status/index.vue'),
   },
   {
     path: '/login/',
