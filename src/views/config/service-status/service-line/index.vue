@@ -104,7 +104,7 @@ watch(() => props.dots, () => dispatchChart());
 #service-line {
   height: 200px;
   margin-top: 10px;
-  border: 6px solid var(--color-border-1);
+  border: 4px solid var(--color-border-1);
   border-radius: var(--border-radius-medium);
 }
 

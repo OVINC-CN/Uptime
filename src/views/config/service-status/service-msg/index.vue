@@ -48,6 +48,8 @@ watch(() => props.dots, () => {
   height: calc(100 * var(--vh) - 440px);
   overflow-y: scroll;
   margin-top: 10px;
+  padding-right: 10px;
+  box-sizing: border-box;
 }
 
 @media (min-height: 800px) {
