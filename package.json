@@ -1,7 +1,7 @@
 {
-    "name": "dev-template",
+    "name": "uptime",
     "version": "1.0.0",
-    "description": "Dev Template",
+    "description": "Uptime offers remote alive monitoring for all services.",
     "main": "src/main.js",
     "author": "OVINC-CN <contact@ovinc.cn>",
     "license": "MIT",
@@ -42,6 +42,7 @@
     "dependencies": {
         "aegis-web-sdk": "^1.37.9",
         "axios": "^1.5.0",
+        "echarts": "^5.5.1",
         "moment": "^2.29.4",
         "vue": "^3.3.4",
         "vue-axios": "^3.5.2",

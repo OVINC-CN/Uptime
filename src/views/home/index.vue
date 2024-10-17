@@ -8,7 +8,7 @@
       direction="vertical"
     >
       <h2 id="home-space-title">
-        Hello
+        {{ $t('ServiceHealthMonitor') }}
       </h2>
     </a-space>
   </a-space>

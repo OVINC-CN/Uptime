@@ -1,5 +1,6 @@
 import {createStore} from 'vuex';
 import {getUserInfoAPI} from '../api/user';
+import {getPermissionsAPI} from '../api/permission';
 
 const store = createStore({
   state() {
@@ -18,6 +19,9 @@ const store = createStore({
         mail_address: null,
       },
       userPropertiesRaw: [],
+      userPermissions: {
+        is_superuser: false,
+      },
     };
   },
   mutations: {
@@ -36,6 +40,9 @@ const store = createStore({
     setUserPropertyRaw(state, payload) {
       state.userPropertiesRaw = payload;
     },
+    setUserPermissions(state, payload) {
+      state.userPermissions = payload;
+    },
   },
   actions: {
     setMainLoading({commit}, payload) {
@@ -51,6 +58,11 @@ const store = createStore({
       getUserInfoAPI().then((res) => {
         commit('setUser', res.data);
         commit('setIsLogin', true);
+      });
+    },
+    loadUserPermissions({commit}) {
+      getPermissionsAPI().then((res) => {
+        commit('setUserPermissions', res.data);
       });
     },
   },

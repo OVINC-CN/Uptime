@@ -1,5 +1,5 @@
 <script setup>
-import {signInAPI} from '../api/user';
+import {signInAPI} from '../../api/user';
 import {onMounted} from 'vue';
 import {Message} from '@arco-design/web-vue';
 

@@ -4,18 +4,22 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('../views/Home.vue'),
+    component: () => import('../views/home/index.vue'),
+  },
+  {
+    path: '/config/',
+    name: 'Config',
+    component: () => import('../views/config/index.vue'),
   },
   {
     path: '/login/',
     name: 'Login',
-    component: () => import('../views/Login.vue'),
+    component: () => import('../views/login/index.vue'),
   },
   {
-
     path: '/:pathMatch(.*)*',
     name: 'Notfound',
-    component: () => import('../views/Error404.vue'),
+    component: () => import('../views/error/404.vue'),
   },
 ];
 

@@ -21,12 +21,17 @@
                   OVINC
                 </div>
               </a-menu-item>
-              <a-menu-item
+              <template
                 v-for="item in menu"
                 :key="item.key"
               >
-                {{ item.name }}
-              </a-menu-item>
+                <a-menu-item
+                  v-if="!item.hide"
+                  :key="item.key"
+                >
+                  {{ item.name }}
+                </a-menu-item>
+              </template>
             </a-menu>
             <a-space id="app-header-right">
               <a-dropdown @select="changeLangAndReload">
@@ -103,12 +108,26 @@ const i18n = useI18n();
 const title = ref(i18n.t('OVINCCN'));
 document.title = title.value;
 
+// store
+const store = useStore();
+const mainLoading = computed(() => store.state.mainLoading);
+const userPermissions = computed(() => store.state.userPermissions);
+store.dispatch('getUserInfo');
+store.dispatch('loadUserPermissions');
+
 // menu
 const menu = ref([
   {
     key: 'Home',
     name: i18n.t('Home'),
     path_match: '/',
+    hide: false,
+  },
+  {
+    key: 'Config',
+    name: i18n.t('Config'),
+    path_match: '/config',
+    hide: computed(() => !userPermissions.value.is_superuser),
   },
 ]);
 const router = useRouter();
@@ -123,11 +142,6 @@ menu.value.forEach((item, index) => {
 
 // footer
 const currentYear = ref(new Date().getFullYear());
-
-// store
-const store = useStore();
-const mainLoading = computed(() => store.state.mainLoading);
-store.dispatch('getUserInfo');
 
 // user
 const user = computed(() => store.state.user);
