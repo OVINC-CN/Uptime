@@ -18,7 +18,10 @@
                 id="app-menu-logo"
               >
                 <div>
-                  Uptime
+                  <a-image
+                    height="24px"
+                    src="/extra-assets/img/uptime.png"
+                  />
                 </div>
               </a-menu-item>
               <template
@@ -205,12 +208,13 @@ onMounted(() => initRUM());
   width: 100px;
   height: 30px;
   border-radius: var(--border-radius-medium);
-  background: var(--color-fill-3);
   padding: 4px;
   cursor: text;
   color: var(--color-text-1);
   text-align: center;
   font-weight: bold;
+  display: flex;
+  align-items: flex-start;
 }
 
 #app-footer {
